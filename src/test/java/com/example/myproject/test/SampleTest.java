@@ -40,9 +40,17 @@ public class SampleTest {
 
     @Test
     public void getHelloService() {
-        logger.info("Starting {}", name.getMethodName());
-        assertNotNull(helloService);
-        assertEquals("Hello Pax!", helloService.getMessage());
-        logger.info("Done {}", name.getMethodName());
+        if (org.ekstazi.Ekstazi.inst().checkIfAffected(name.getMethodName())) {
+            org.ekstazi.Ekstazi.inst().startCollectingDependencies(name.getMethodName());
+            try {
+                // Collecting dependencies for code here.
+                logger.info("Starting {}", name.getMethodName());
+                assertNotNull(helloService);
+                assertEquals("Hello Pax!", helloService.getMessage());
+                logger.info("Done {}", name.getMethodName());
+            } finally {
+                org.ekstazi.Ekstazi.inst().finishCollectingDependencies(name.getMethodName());
+            }
+        }
     }
 }

@@ -116,7 +116,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18</version>
                 <configuration>
-                    <argLine>-javaagent:${user.home}/.m2/repository/org/ekstazi/org.ekstazi.core/${ekstazi.version}/org.ekstazi.core-${ekstazi.version}.jar=mode=single,root.dir=/tmp/,dependencies.format=txt,single.name=paxexam</argLine>
+                    <argLine>-javaagent:${user.home}/.m2/repository/org/ekstazi/org.ekstazi.core/${ekstazi.version}/org.ekstazi.core-${ekstazi.version}.jar=mode=multi,root.dir=/tmp/,dependencies.format=txt</argLine>
                 </configuration>
             </plugin>
         </plugins>
